@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Diagnostics;
 
 namespace Sudoku
 {
@@ -6,52 +7,26 @@ namespace Sudoku
     {
         static void Main(string[] args)
         {
-            string sudokuString = UserInput();
-            int sudokuWidth = Validation.IsLengthValid(sudokuString);
-            Console.WriteLine();
-            Console.WriteLine(String.Format("Sudoku width: {0}", sudokuWidth));
-            Console.WriteLine();
-            Validation.AreElementsValid(sudokuString, sudokuWidth);
-            BoardClasses.Board board = new BoardClasses.Board(sudokuString, sudokuWidth);
-            board.convertToMatrix();
-            Console.WriteLine("Given Sudoku:");
-            board.printBoard();
-            Console.WriteLine();
-            Optimization.InsertOnlyOptions(board);
-            board.convertToString();
-            Console.WriteLine("Solved Sudoku:");
-            Console.WriteLine(board.SudokuString);
-            Console.WriteLine();
-            board.printBoard();
-        }
 
-        public static string UserInput()
-        {
-            /*Lets the user decide if he wants to insert the sudoku string by console or by file.
-            Returns the sudoku string*/
+            /*070010006000805210001306900304000600062053071900408025009700502700000004120000739
 
-            while (true)
-            {
-                Console.WriteLine("If you wish to insert sudoku by console, enter 'C'\nIf you wish to insert sudoku by file, enter 'F'");
-                char choice = Console.ReadLine()[0];
+            070900045000005700206400800000009000010000607400500010090700160132600009000291030
+            070800200000500001004071300050029003000100000600000400005000020000080000020037009
 
-                if(choice == 'C')
-                {
-                    Console.WriteLine("Please enter the sudoku string here:\n");
-                    string sudokuString = Console.ReadLine();
-                    return sudokuString;
-                }
+            030107800000025760000000000400000000000482000000709600900001506000000000000200009
 
-                else if (choice == 'F')
-                {
-                    Console.WriteLine("Please enter the file's path here:\n");
-                    string path = Console.ReadLine();
-                    string sudokuString = System.IO.File.ReadAllText(path);
-                    return sudokuString;
-                }
+            000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-                Console.WriteLine("'{0}' is an illegal response, please try again\n\n", choice);
-            }
+            10023400<06000700080007003009:6;0<00:0010=0;00>0300?200>000900<0=000800:0<201?000;76000@000?005=000:05?0040800;0@0059<00100000800200000=00<580030=00?0300>80@000580010002000=9?000<406@0=00700050300<0006004;00@0700@050>0010020;1?900=002000>000>000;0200=3500<
+
+            100000009000000A000000000000000000000000000000000000000000000000000000000000000020000000:000000B000000000000000000000000000000000000000000000000000000000000000030000000;0000000C00000000000000000000000000000000000000000000000000000000000000040000000<00000000D0000000000000000000000000000000000000000000000000000000000000050000000=00000000E0000000000000000000000000000000000000000000000000000000000000060000000>00000000F0000000000000000000000000000000000000000000000000000000000000070000000?0000000G00000000000000000000000000000000000000000000000000000000000000080000000@0000000H0000000I0000000000000000000000000000000000000000
+            
+            00;50060A04G090003000000010B0<000900000000A40000000000000E000020100=;0?7H000?0001F00<;E000D>B20000=0F0G00000H730?BD0060002;080301000000090G;@?00040000008005H0007042000000C00AB>09:000A;B0000000F00600300000000=0E00A?C05:<0000000E0H000@43600=072D00:00050C<>00000080010H0070040D0000000?906003C00800=0G0@0H1400000<00000E00000B0700006D00;01@000A5?00>00<09079A;?800040000B00@0D0>00E0700>02050D0060A=40000000000B000?:0009EH>000000D000200D003000010<0GH00=00500000000>0;=05@G0000000<0004F?30<G610800>20E000000700HC10B000000000D200;0000?;040:D0F00>0000B800000H900008CE63020=HA0:0000000>G050E70H=09:080C0?060F00<=<D000400050E0F9000100A60
+             */
+
+            bool toContinue = true;
+            while(toContinue)
+                toContinue = SolveBoard.SolveSudoku();
         }
     }
 }
