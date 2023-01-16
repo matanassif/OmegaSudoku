@@ -74,8 +74,8 @@ namespace Sudoku.BoardClasses
         {
             this.Search();
 
-            //if (this.result.Count == 0)
-            //    throw new Exceptions.UnsolvableBoardException("The given sudoku board is Unsolvable");
+            if (this.result.Count == 0)
+                throw new Exceptions.UnsolvableBoardException("The given sudoku board is Unsolvable");
 
             return this.result;
         }

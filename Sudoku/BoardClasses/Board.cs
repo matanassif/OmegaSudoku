@@ -100,7 +100,7 @@ namespace Sudoku.BoardClasses
 
             //Creating the cover matrix
             byte[,] matrix = new byte[this.width * this.width * this.width, this.width * this.width * CONSTRAINTS_AMOUNT];
-            //Console.WriteLine($"Row length: {this.width * this.width * this.width}, Col length: {this.width * this.width * CONSTRAINTS_AMOUNT}");
+
             //Setting the starting position of the row
             int rowPosition = 0;
 

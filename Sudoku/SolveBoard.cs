@@ -80,8 +80,6 @@ namespace Sudoku
                     handler.Write(board, path);
                     break;
             }
-
-            Console.WriteLine(board.SudokuString);
         }
 
         /// <summary>
@@ -152,11 +150,11 @@ namespace Sudoku
             {
                 Console.WriteLine(fntfe.Message.ToString());
             }
-            catch (FileNotFoundException fnfe)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("The inserted file does not exist");
             }
-            catch (UnauthorizedAccessException uae)
+            catch (UnauthorizedAccessException)
             {
                 Console.WriteLine("There is unauthorized access to the given file");
             }
