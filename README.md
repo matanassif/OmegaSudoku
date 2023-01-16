@@ -1,4 +1,5 @@
 # OmegaSudoku
+<<<<<<< HEAD
 The project is a Sudoku Solver which uses the Dancing Links algorithm.
 
 There are a couple of conditions for every sudoku board in order to be valid or solvable:
@@ -126,3 +127,5 @@ The algorithm operates according to the following stages:
 5. Converting the nodes of the sparse matrix to values of the cells.
 
 6. Returning the solution.
+=======
+>>>>>>> 69565271b2fe6478d3657648039e1053a7bac55f
